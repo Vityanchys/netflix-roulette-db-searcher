@@ -1,0 +1,6 @@
+/node_modules
+/public
+server.js*
+yarn.lock
+bundle*
+/server
