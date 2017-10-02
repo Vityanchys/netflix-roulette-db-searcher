@@ -1,14 +1,14 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname, 'src/public_dev');
+var BUILD_DIR = path.resolve(__dirname, 'public_dev');
 var APP_DIR = path.resolve(__dirname, 'src');
 
 module.exports = {
   entry: APP_DIR + "/client/index.js",
   output: {
     path: BUILD_DIR,
-    filename: 'js/bundle.js'
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
