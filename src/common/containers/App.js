@@ -1,14 +1,17 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import Counter from '../components/Counter';
-import * as CounterActions from '../actions';
+import React, { Component } from "react";
+import { Switch, Route } from "react-router-dom";
+import routes from "../routes";
 
-const mapStateToProps = (state) => ({
-  counter: state.counter
-});
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(CounterActions, dispatch);
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Switch>
+          {routes.map((route, i) => <Route key={i} {...route} />)}
+        </Switch>
+      </div>
+    );
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default App;

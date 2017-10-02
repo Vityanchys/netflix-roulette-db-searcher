@@ -16,6 +16,8 @@ import configureStore from '../common/store/configureStore';
 import App from '../common/containers/App';
 import { fetchCounter } from '../common/api/counter';
 
+import { StaticRouter } from "react-router-dom";
+
 const app = new express();
 const port = process.env.PORT || 3000;
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -27,7 +29,7 @@ const isDevelopment = process.env.NODE_ENV !== "production";
   app.use(webpackHotMiddleware(compiler));
 }*/
 
-app.use(express.static('src/public'));
+app.use(express.static('public'));
 
 const handleRender = (req, res) => {
   // Query our mock API asynchronously
@@ -45,7 +47,9 @@ const handleRender = (req, res) => {
     // Render the component to a string
     const html = renderToString(
       <Provider store={store}>
-        <App />
+        <StaticRouter location={req.url} context={{}}>
+          <App />
+        </StaticRouter>
       </Provider>
     );
 
@@ -72,7 +76,7 @@ const renderFullPage = (html, preloadedState) => {
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\x3c')}
         </script>
-        <script src="js/bundle.js" defer></script>
+        <script src="bundle.js" defer></script>
       </body>
     </html>
     `
