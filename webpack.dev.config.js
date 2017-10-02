@@ -13,7 +13,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /js$/,
+        test: /(js|jsx)$/,
         exclude: /(node_modules)/,
         loader: "babel-loader",
         query: { presets: ["react-app"] }
@@ -24,5 +24,6 @@ module.exports = {
     contentBase: BUILD_DIR,
     compress: true,
     port: 3000
-  }
+  },
+  devtool: "cheap-module-source-map"  
 };
