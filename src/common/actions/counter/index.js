@@ -1,4 +1,4 @@
-import { fetchCounter } from '../api/counter';
+import { fetchCounter } from '../../api/counter';
 
 export const SET_COUNTER = 'SET_COUNTER';
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
