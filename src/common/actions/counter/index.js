@@ -1,8 +1,12 @@
-import { fetchCounter } from '../../api/counter';
+import { fetchCounterApi } from '../../api/counter';
 
 export const SET_COUNTER = 'SET_COUNTER';
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
+
+export const FETCH_COUNTER_REQUEST = "FETCH_COUNTER_REQUEST";
+export const FETCH_COUNTER_SUCCESS = "FETCH_COUNTER_SUCCESS";
+export const FETCH_COUNTER_FAILURE = "FETCH_COUNTER_FAILURE";
 
 export const set = (value) => ({
   type: SET_COUNTER,
@@ -33,8 +37,13 @@ export const incrementAsync = (delay = 1000) => dispatch => {
   }, delay);
 }
 
-export const randomRefresh = () => dispatch => {
-  fetchCounter(result => {
-    dispatch(set(result));
-  });
-}
+const requestCounter = () => ({ type: FETCH_COUNTER_REQUEST });
+const receivedCounter = counter => ({ type: SET_COUNTER, payload: counter });
+const fetchError = () => ({ type: FETCH_COUNTER_FAILURE });
+
+export const fetchCounter = () => dispatch => {
+  dispatch(requestCounter());
+  return fetchCounterApi()
+    .then(counter => {dispatch(receivedCounter(counter)) })
+    .catch(err => dispatch(fetchError(err)));
+};
