@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Counter = ({ increment, incrementIfOdd, incrementAsync, decrement, randomRefresh, counter }) => (
+const Counter = ({ increment, incrementIfOdd, incrementAsync, decrement, fetchCounter, counter }) => (
   <p>
     Clicked: {counter} times
     {' '}
-    <button onClick={randomRefresh}>Refresh by API</button>
+    <button onClick={fetchCounter}>Refresh by API</button>
     {' '}
     <button onClick={increment}>+</button>
     {' '}
@@ -22,7 +22,7 @@ Counter.propTypes = {
   incrementIfOdd: PropTypes.func.isRequired,
   incrementAsync: PropTypes.func.isRequired,
   decrement: PropTypes.func.isRequired,
-  randomRefresh: PropTypes.func.isRequired,
+  fetchCounter: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired
 };
 
