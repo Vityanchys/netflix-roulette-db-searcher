@@ -1,4 +1,4 @@
-import Counter from './components/Counter';
+import { Counter, FilmItem } from './components';
 import { Main, Page404 } from "./containers/pages";
 
 const routes = [
@@ -10,6 +10,10 @@ const routes = [
   {
     path: "/counter",
     component: Counter
+  },
+  {
+    path: "/film",
+    component: FilmItem
   },
   {
     path: "*",
