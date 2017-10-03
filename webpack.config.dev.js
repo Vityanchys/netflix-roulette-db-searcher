@@ -30,5 +30,6 @@ module.exports = {
         query: { presets: ["react-app"] }
       }
     ]
-  }
+  },
+  devtool: "cheap-module-source-map"
 };
