@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -28,8 +29,14 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: "babel-loader",
         query: { presets: ["react-app"] }
-      }
-    ]
+      },
+      {
+        test: /\.sass$/,
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: "style-loader",
+          loader: "css-loader!sass-loader",
+        }),
+      }]
   },
   devtool: "cheap-module-source-map"
 };
