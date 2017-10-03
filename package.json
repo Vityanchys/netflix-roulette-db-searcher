@@ -2,7 +2,10 @@
   "name": "react-redux-universal",
   "version": "0.0.0",
   "scripts": {
+    "start": "npm run build && npm run start-prod-server",
     "dev": "cross-env NODE_ENV=development babel-node ./src/server/index.js",
+    "build": "cross-env NODE_ENV=development webpack --config ./webpack.config.prod.js",
+    "start-prod-server": "cross-env NODE_ENV=production babel-node ./src/server/index.js",
     "test": "jest"
   },
   "dependencies": {
