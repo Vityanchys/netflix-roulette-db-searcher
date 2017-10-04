@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+  devtool: "cheap-module-source-map",
   entry: [
     'webpack-hot-middleware/client',
     path.resolve(__dirname, 'src/client')
@@ -28,8 +29,15 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: "babel-loader",
         query: { presets: ["react-app"] }
+      },
+      {
+        test: /\.scss/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ],
       }
     ]
-  },
-  devtool: "cheap-module-source-map"
+  }
 };

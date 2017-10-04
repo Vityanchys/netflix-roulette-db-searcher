@@ -45,6 +45,7 @@ const renderFullPage = (html, state) => {
 		<html>
 			<head>
 				<title>Universal App</title>
+				<link rel="stylesheet" type="text/css" href="bundle.css">
 			</head>
 			<body>
 				<div id="app">${html}</div>
