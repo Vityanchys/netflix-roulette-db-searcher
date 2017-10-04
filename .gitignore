@@ -1,7 +1,5 @@
 /node_modules
 /public
-server.js*
 yarn.lock
 bundle*
-/server
-package-lock.json
+package-lock.json*
