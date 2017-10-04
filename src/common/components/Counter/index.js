@@ -18,7 +18,11 @@ class Counter extends Component {
   }
 
   render() {
-    return <CounterComponent {...this.props} />;
+    let { counter, dispatch } = this.props;
+
+    let boundActionCreators = bindActionCreators(CounterActions, dispatch);
+
+    return <CounterComponent counter={counter} {...boundActionCreators} />;
   }
 }
 
@@ -26,8 +30,8 @@ const mapStateToProps = (state) => ({
   counter: state.counter
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(CounterActions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect(
+  state => ({
+    counter: state.counter
+  })
+)(Counter);
