@@ -4,3 +4,4 @@ server.js*
 yarn.lock
 bundle*
 /server
+package-lock.json
