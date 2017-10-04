@@ -1,8 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+  devtool: "cheap-module-source-map",
   entry: [
     'webpack-hot-middleware/client',
     path.resolve(__dirname, 'src/client')
@@ -31,12 +31,13 @@ module.exports = {
         query: { presets: ["react-app"] }
       },
       {
-        test: /\.sass$/,
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: "style-loader",
-          loader: "css-loader!sass-loader",
-        }),
-      }]
-  },
-  devtool: "cheap-module-source-map"
+        test: /\.scss/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ],
+      }
+    ]
+  }
 };
